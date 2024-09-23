@@ -1,0 +1,29 @@
+.fumi img{
+    width: 50px;
+    border-radius: 50%;
+}
+
+.fumi{
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.testimonial{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 40px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .testimonial{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .testimonial{
+        grid-template-columns: 1fr;
+    }
+}

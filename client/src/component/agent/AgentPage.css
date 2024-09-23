@@ -1,0 +1,19 @@
+.agent{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 70px;
+    margin: 40px 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .agent{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .agent{
+        grid-template-columns: 1fr;
+    }
+    
+}

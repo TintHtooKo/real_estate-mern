@@ -1,0 +1,67 @@
+.service{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.work-flow{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 50px;
+}
+
+.work-mob{
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    .service{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .service div img{
+        width: 50px;
+    }
+
+    .service div h1{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .work{
+        flex-direction: column;
+    }
+
+    .howitwork{
+        width: 100%;
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .service{
+        grid-template-columns: repeat(1,1fr);
+        margin-top: 30px;
+    }
+
+    .smartest{
+        font-size: 30px;
+    }
+
+    .work{
+        display: none;
+    }
+
+    .work-mob{
+        display: block;
+        background-image:   linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../assets/img1.webp');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        margin-top: 60px;
+    }
+
+
+    
+}

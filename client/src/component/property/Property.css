@@ -1,0 +1,21 @@
+@media screen and (max-width: 768px) {
+    .offer{
+        position: static;
+        border: 1px solid rgb(235, 235, 235);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .offerone{
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .offertwo{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 0;
+    }
+}

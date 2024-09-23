@@ -1,0 +1,7 @@
+.scrolltop button.scrolled{
+    opacity: 1;
+}
+
+.scrolltop button{
+    transition: opacity 0.5s ease-in-out;
+}

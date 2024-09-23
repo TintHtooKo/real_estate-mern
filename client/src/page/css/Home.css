@@ -1,0 +1,22 @@
+.property-home{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 150px 50px;
+    margin: 50px 40px 0 40px;
+}
+
+.cus-height{
+    margin-top: 20rem;
+}
+
+@media screen and (max-width: 768px) {
+    .property-home{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .cus-height{
+        margin-top: 8rem;
+    }
+}

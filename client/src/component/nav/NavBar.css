@@ -1,0 +1,54 @@
+.mob{
+    display: none;
+}
+
+.mob-menu {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: 0;
+    align-items: center;
+    gap: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+  }
+  
+  .mob-menu.open {
+    max-height: 350px; 
+    padding: 30px 0;  
+  }
+
+@media screen and (max-width: 768px) {
+    
+    nav div .menu{
+        display: none;
+    }
+
+    nav .nav-btn{
+        display: none;
+    }
+
+    .mob{
+        display: flex;
+        flex-direction: column;
+    }
+
+   
+
+    
+    
+}
+
+@media screen and (max-width: 425px) {
+
+
+    .mob-menu a {
+        font-size: 14px;
+    }
+
+    .mob-menu div a{
+        padding: 15px ;
+    }
+}

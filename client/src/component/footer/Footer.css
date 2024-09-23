@@ -1,0 +1,24 @@
+.footer{
+    background-color: rgb(250, 250, 250);
+    padding: 50px 50px;
+    margin-top: 5rem;
+}
+
+.footer-one{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-one{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .footer-one{
+        grid-template-columns: 1fr;
+    }
+    
+}

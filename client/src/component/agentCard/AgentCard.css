@@ -1,0 +1,15 @@
+.agcard{
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .agcard div{
+        top: 20rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .agcard div{
+        top: 15rem;
+    }
+}
