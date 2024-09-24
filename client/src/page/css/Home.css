@@ -13,6 +13,10 @@
     .property-home{
         grid-template-columns: 1fr;
     }
+
+    .register div input{
+        width : 20rem;
+    }
 }
 
 @media screen and (max-width: 500px) {

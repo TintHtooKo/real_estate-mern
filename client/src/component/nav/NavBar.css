@@ -21,7 +21,9 @@
   }
 
 @media screen and (max-width: 768px) {
-    
+    .logout{
+        display: none;
+    }
     nav div .menu{
         display: none;
     }
