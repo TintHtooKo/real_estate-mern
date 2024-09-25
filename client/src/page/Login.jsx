@@ -4,13 +4,14 @@ import { ToastContainer,toast } from 'react-toastify'
 import Spinner from '../assets/spinner.svg'
 import axios from '../helper/axios'
 import { AuthContext } from '../context/AuthContext'
+import Skeleton from '../component/skeleton/Skeleton'
 
 export default function Login() {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [loading,setLoading] = useState(false)
   const navigate = useNavigate()
-  const {dispatch} = useContext(AuthContext)
+  const {user,dispatch} = useContext(AuthContext)
   const handleSubmit = async(e) =>{
     try {
       setLoading(true)
@@ -29,22 +30,16 @@ export default function Login() {
         setLoading(false)
       }
 
-      let res = await axios.post('/user/login',data,{withCredentials:true})      
+      let res = await axios.post('/user/login',data,{withCredentials:true})            
       if(res.status == 200){
         dispatch({type : 'LOGIN', payload : res.data.user})
-        toast.success('Login Successfully',{
-          position : 'top-right',
-          autoClose : 4000,
-          pauseOnHover : true,
-          draggable : true,
-          theme : 'dark'
-        })
-        setTimeout(()=>{
-          navigate('/properties')
-        },1000)
+        if(res.data.user.role.role === 'superadmin' || res.data.user.role.role === 'admin'){
+          navigate('/admin/dashboard')
+        }else{
+          navigate('/')
+        }       
+        setLoading(false)
       }
-      setLoading(false)
-      
     } catch (error) {
       toast.error(error.response.data.msg,{
         position : 'top-right',

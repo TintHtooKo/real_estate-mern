@@ -1,4 +1,4 @@
-import {createContext, useEffect, useReducer} from 'react'
+import {createContext, useEffect, useReducer, useState} from 'react'
 import axios from '../helper/axios'
 
 const AuthContext = createContext();
@@ -6,7 +6,7 @@ const AuthContext = createContext();
 let AuthReducer = (state,action) =>{
     switch (action.type) {
         case "LOGIN":
-            localStorage.setItem('user',JSON.stringify(action.payload))        
+            localStorage.setItem('user',JSON.stringify(action.payload))     
             return {user : action.payload};
         case "LOGOUT": 
             localStorage.removeItem('user')  
@@ -26,6 +26,7 @@ const AuthContextProvider = ({children}) =>{
         try {
             axios.get('/user/me').then(res=>{
                 let user = res.data
+                
                 if(user){
                     dispatch({type : 'LOGIN', payload : user})
                 }else{

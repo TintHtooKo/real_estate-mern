@@ -23,5 +23,6 @@ app.use(cors({
     credentials: true,
 }))
 
+
 app.use('/role',RoleRoute)
 app.use('/user',UserRoute)

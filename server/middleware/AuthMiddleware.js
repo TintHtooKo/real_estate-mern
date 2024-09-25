@@ -7,7 +7,7 @@ const AuthMiddleware = (req,res,next) =>{
             if(err){
                 return res.status(401).json({msg:'Unauthenticate'})
             }else{
-                User.findById(decodedValue._id).then(user =>{
+                User.findById(decodedValue._id).populate('role').then(user =>{
                     req.user = user;
                     next()
                 });              

@@ -72,6 +72,24 @@ const UserController = {
 
     me : async(req,res) =>{
         return res.json(req.user)
+    },
+
+    userlist : async(req,res) =>{
+        try {
+            let userlist = await User.find().populate({
+                path:'role',
+                match : {role : 'user'}
+            })
+            // user role nae find yin user role ma hote tr ka role mhr null nae htwt nay mal
+            // eg . userlist htoke kyi yin role admin mhr role null phit nay mal
+            // therefore null phit tae user ko ma u chin loh filter lote mal
+            // ae dr so user list ya mal
+
+            userlist = userlist.filter(user => user.role !== null)
+            return res.status(200).json(userlist)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
     }
 }
 
