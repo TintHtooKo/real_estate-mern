@@ -28,9 +28,7 @@ export default function Register() {
           theme : 'dark'
         })
         setLoading(false)
-      }
-
-      if(password !== confirmPassword){
+      }else if(password !== confirmPassword){
         toast.error('Password and Confirm Password must be the same',{
           position : 'top-right',
           autoClose : 4000,
@@ -39,11 +37,14 @@ export default function Register() {
           theme : 'dark'
         })
         setLoading(false)
-      }
-
-      let res = await axios.post('/user/register/',data,{withCredentials:true})
+      }else{let res = await axios.post('/user/register/',data,{withCredentials:true})
       
       if(res.status == 200){
+        setFullname('')
+        setEmail('')
+        setPhone('')
+        setPassword('')
+        setConfirmPassword('')
         toast.success('Registration Successfully',{
           position : 'top-right',
           autoClose : 4000,
@@ -55,7 +56,7 @@ export default function Register() {
           navigate('/login')
         },1000)
         setLoading(false)
-      }
+      }}
 
       
 

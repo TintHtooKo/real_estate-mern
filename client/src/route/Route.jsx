@@ -15,6 +15,7 @@ import ErrorPage from '../component/404/404page'
 import UserList from '../adminPage/UserList'
 import AdminList from '../adminPage/AdminList'
 import AddAdmin from '../adminComponent/addAdmin/AddAdmin'
+import AdminProperties from '../adminPage/AdminProperties'
 
 
 
@@ -31,27 +32,27 @@ export default function Route() {
             children : [
                 {
                     path : '/',
-                    element : <Home/>
+                    element : !isAdmin && <Home/>
                 },
                 {
                     path : '/about',
-                    element : <About/>
+                    element :!isAdmin && <About/>
                 },
                 {
                     path : '/agent',
-                    element : <Agent/>
+                    element : !isAdmin && <Agent/>
                 },
                 {
                     path : '/services',
-                    element : <Services/>
+                    element : !isAdmin && <Services/>
                 },
                 {
                     path : '/properties',
-                    element : <Properties/>
+                    element : !isAdmin && <Properties/>
                 },
                 {
                     path : '/contact',
-                    element : <Contact/>
+                    element : !isAdmin && <Contact/>
                 },
                 {
                     path : '/login',
@@ -76,6 +77,10 @@ export default function Route() {
                 {
                     path : '/admin/addadmin',
                     element : isAdmin ? <AddAdmin/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/properties',
+                    element : isAdmin ? <AdminProperties/> : <ErrorPage/>
                 }
             ]
         }

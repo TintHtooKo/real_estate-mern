@@ -1,0 +1,10 @@
+
+@media screen and (max-width: 500px) {
+    .ad-dashboard div div{
+        padding: 10px;
+    }
+
+    .ad-dashboard div div div{
+        font-size: 14px;
+    }
+}
