@@ -11,6 +11,7 @@ export default function NavBar() {
   const handleCloseMenu = () => setOpen(false)
   const { user, dispatch } = useContext(AuthContext)
   const navigate = useNavigate()
+  
 
   const LogoutSubmit = async () => {
     let res = await axios.post('/user/logout')

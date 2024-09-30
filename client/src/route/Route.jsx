@@ -16,6 +16,10 @@ import UserList from '../adminPage/UserList'
 import AdminList from '../adminPage/AdminList'
 import AddAdmin from '../adminComponent/addAdmin/AddAdmin'
 import AdminProperties from '../adminPage/AdminProperties'
+import PropertyType from '../adminPage/PropertyType'
+import AddProperty from '../adminComponent/addProperty/AddProperty'
+import AdminPropertyDetail from '../adminComponent/propertyDetail/AdminPropertyDetail'
+
 
 
 
@@ -81,7 +85,24 @@ export default function Route() {
                 {
                     path : '/admin/properties',
                     element : isAdmin ? <AdminProperties/> : <ErrorPage/>
-                }
+                },
+                {
+                    path : '/admin/protype',
+                    element : isAdmin ? <PropertyType/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/add/property',
+                    element : isAdmin ? <AddProperty/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/property/:id',
+                    element : isAdmin ? <AdminPropertyDetail/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/add/property/:id',
+                    element : isAdmin ? <AddProperty/> : <ErrorPage/>
+                },
+                
             ]
         }
     ])

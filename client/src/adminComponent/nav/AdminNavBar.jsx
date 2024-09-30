@@ -34,7 +34,7 @@ export default function AdminNavBar({open}) {
           <NavLink to={'/admin/adminlist'} className={({isActive})=>`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
-            <i className="fa-solid fa-users me-5"></i>Agent List
+            <i className="fa-solid fa-user-tie me-5"></i>Agent List
           </NavLink>
 
           <NavLink to={'/admin/userlist'} className={({isActive})=>`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 
@@ -47,6 +47,12 @@ export default function AdminNavBar({open}) {
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
             <i class="fa-solid fa-house-chimney me-5"></i>Properties
+          </NavLink>
+
+          <NavLink to={'/admin/protype'} className={({isActive})=>`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 
+                                      ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
+                                      `}>
+            <i class="fa-solid fa-house-circle-check me-5"></i>Property Type
           </NavLink>
               
           <button onClick={LogoutSubmit} className={`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 text-gray-500 hover:text-gray-200 '}

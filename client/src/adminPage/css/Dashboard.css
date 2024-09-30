@@ -7,4 +7,9 @@
     .ad-dashboard div div div{
         font-size: 14px;
     }
+
+    .pro-type{
+        flex-direction: column;
+        margin: 20px;
+    }
 }

@@ -5,6 +5,9 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const RoleRoute = require('./route/RoleRoute')
 const UserRoute = require('./route/UserRoute')
+const RentOrSellRoute = require('./route/RentOrSellRoute')
+const PropertyRoute = require('./route/PropertyRoute')
+const HomeTypeRoute = require('./route/HomeTypeRoute')
 require('dotenv').config()
 
 
@@ -26,3 +29,6 @@ app.use(cors({
 
 app.use('/role',RoleRoute)
 app.use('/user',UserRoute)
+app.use('/rentsell',RentOrSellRoute)
+app.use('/property',PropertyRoute)
+app.use('/type',HomeTypeRoute)

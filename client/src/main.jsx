@@ -5,6 +5,7 @@ import Route from './route/Route'
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContextProvider } from './context/AuthContext';
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthContextProvider>

@@ -30,7 +30,7 @@ export default function AdminNavHeader({toggle}) {
     <>
     <div className=' adheader p-4 flex items-center justify-between bg-white shadow-md  border-b border-gray-300 w-full'>
         <i className='fa fa-bars hideicon text-2xl cursor-pointer mx-2' onClick={toggle}></i>
-        <i className='fa fa-bars lg:hidden text-2xl cursor-pointer mx-2' onClick={toggleMenu} ></i>
+        <i className='fa fa-bars md:hidden text-2xl cursor-pointer mx-2' onClick={toggleMenu} ></i>
         <div>
 
           <div className="adprofile flex relative items-center">

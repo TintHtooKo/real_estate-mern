@@ -1,0 +1,11 @@
+/* For Chrome, Safari, Edge, and Opera */
+.hide input[type="number"]::-webkit-outer-spin-button,
+.hide input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+.hide input[type="number"] {
+  -moz-appearance: textfield;
+}
