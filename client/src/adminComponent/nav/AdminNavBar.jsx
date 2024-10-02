@@ -55,13 +55,13 @@ export default function AdminNavBar({open}) {
             <i class="fa-solid fa-house-circle-check me-5"></i>Property Type
           </NavLink>
 
-          <NavLink  className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
+          <NavLink to={'/admin/apointment'}  className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
             <i class="fa-solid fa-calendar-check me-5"></i>Apointment
           </NavLink>
 
-          <NavLink  className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
+          <NavLink to={'/admin/contact'}  className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
             <i class="fa-solid fa-message me-5"></i>Contact Message

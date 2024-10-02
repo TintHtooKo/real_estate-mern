@@ -54,8 +54,8 @@ export default function AdminNavHeader({toggle}) {
           <li><Link to={'/admin/adminlist'} onClick={menuClose}>Admin List</Link></li>
           <li><Link to={'/admin/userlist'} onClick={menuClose}>User List</Link></li>
           <li><Link to={'/admin/properties'} onClick={menuClose}>Properties</Link></li>
-          <li><Link to={'/admin/properties'} onClick={menuClose}>Apointment</Link></li>
-          <li><Link to={'/admin/properties'} onClick={menuClose}>Contact Message</Link></li>
+          <li><Link to={'/admin/apointment'} onClick={menuClose}>Apointment</Link></li>
+          <li><Link to={'/admin/contact'} onClick={menuClose}>Contact Message</Link></li>
           <li><button onClick={LogoutSubmit}>Logout</button></li>
         </ul>
       </div>

@@ -1,0 +1,13 @@
+@media screen and (max-width: 500px) {
+    .contact-detail{
+        margin: 0 10px;
+    }
+
+    .contact-detail div p{
+        font-size: 14px;
+    }
+
+    .contact-detail div .msg{
+        width: 100%;
+    }
+}

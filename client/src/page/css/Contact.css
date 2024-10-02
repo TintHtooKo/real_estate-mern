@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+    .contact{
+        flex-direction: column;
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .contact{
+        margin: 10px 0;
+    }
+    .contact div form {
+        border: none;
+        padding: 0;
+        box-shadow: none;
+    }
+}

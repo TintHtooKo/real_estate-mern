@@ -22,6 +22,9 @@ import AdminPropertyDetail from '../adminComponent/propertyDetail/AdminPropertyD
 import AdminProfile from '../adminPage/AdminProfile'
 import AdChangePw from '../adminComponent/adChangePw/AdChangePw'
 import AdEditProfile from '../adminComponent/adEditProfile/AdEditProfile'
+import ContactMsg from '../adminPage/ContactMsg'
+import AdApointment from '../adminPage/AdApointment'
+import ContactDetail from '../adminComponent/contactDetail/ContactDetail'
 
 
 
@@ -116,6 +119,18 @@ export default function Route() {
                 {
                     path : '/admin/edit/profile',
                     element: isAdmin ? <AdEditProfile/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/contact',
+                    element : isAdmin ? <ContactMsg/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/apointment',
+                    element : isAdmin ? <AdApointment/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/contact/:id',
+                    element : isAdmin ? <ContactDetail/> : <ErrorPage/>
                 }
                 
             ]

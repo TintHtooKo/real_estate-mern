@@ -8,6 +8,7 @@ const UserRoute = require('./route/UserRoute')
 const RentOrSellRoute = require('./route/RentOrSellRoute')
 const PropertyRoute = require('./route/PropertyRoute')
 const HomeTypeRoute = require('./route/HomeTypeRoute')
+const ContactRoute = require('./route/ContactRoute')
 require('dotenv').config()
 
 
@@ -32,3 +33,4 @@ app.use('/user',UserRoute)
 app.use('/rentsell',RentOrSellRoute)
 app.use('/property',PropertyRoute)
 app.use('/type',HomeTypeRoute)
+app.use('/contact',ContactRoute)
