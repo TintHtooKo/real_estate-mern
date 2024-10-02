@@ -40,12 +40,12 @@ export default function AddProperty() {
             setLocation(res.data.location)
             setBathroom(res.data.bathroom)
             setSqft(res.data.sqft)
-
-            if (Array.isArray(res.data.image)) {
-                // If image is already an array of URLs, use it directly
-                const imageURLs = res.data.image.map((path) => import.meta.env.VITE_BACKEND_URL_ACCESS + path);
-                setPreviews(imageURLs);
-            }
+            
+            // if (Array.isArray(res.data.image)) {
+            //     // If image is already an array of URLs, use it directly
+            //     const imageURLs = res.data.image.map((path) => import.meta.env.VITE_BACKEND_URL_ACCESS + path);
+            //     setPreviews(imageURLs);
+            // }
         }
         fetchDetail()
     }, [id])
@@ -83,10 +83,10 @@ export default function AddProperty() {
         setFiles((prevFiles) => [...prevFiles, ...fileArray]);
     };
 
-    let removeImage = (index) => {
-        setFiles(files.filter((_, i) => i !== index));
-        setPreviews(previews.filter((_, i) => i !== index));
-    };
+    // let removeImage = (index) => {
+    //     setFiles(files.filter((_, i) => i !== index));
+    //     setPreviews(previews.filter((_, i) => i !== index));
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -169,7 +169,7 @@ export default function AddProperty() {
     return (
         <>
             <div className="">
-                <Link to={'/admin/property/' + property._id} className=' bg-slate-800 mt-4  px-2 rounded'><i className=' text-white fa-solid fa-arrow-left text-xl'></i></Link>
+               {id &&  <Link to={'/admin/property/' + property._id} className=' bg-slate-800 mt-4  px-2 rounded'><i className=' text-white fa-solid fa-arrow-left text-xl'></i></Link>}
                 <h1 className=' text-[2rem] my-4 text-center'>{id ? 'Edit' : 'Add New'} Property</h1>
                 <div className=" flex items-center justify-center">
                     <form action="" onSubmit={handleSubmit} className='register'>
@@ -242,17 +242,21 @@ export default function AddProperty() {
                             <input type="file" multiple onChange={upload} className=' border-b border-r rounded-full p-2 px-4 w-[30rem] text-gray-700 outline-none shadow-md' />
                         </div>
 
-                        <div className="flex flex-wrap gap-4 mt-4">
+                        <div className="prev mt-4">
                             {previews.map((preview, index) => (
                                 <div key={index} className="relative">
                                     <img src={preview} className="w-40" alt={`Preview ${index + 1}`} />
-                                    <button
+                                    {/* {
+                                        !id && (
+                                            <button
                                         type='button'
-                                        className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
+                                        className="absolute top-0 bg-red-500 text-white p-1 rounded-full"
                                         onClick={() => removeImage(index)}
                                     >
                                         X
                                     </button>
+                                        )
+                                    } */}
                                 </div>
                             ))}
                         </div>

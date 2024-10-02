@@ -23,6 +23,10 @@ const UserSchema = new Schema({
     role : {
         type :Schema.Types.ObjectId,
         ref : 'Role',
+    },
+    profile : {
+        type : String,
+        default : null
     }
 },{timestamps : true})
 

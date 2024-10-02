@@ -46,35 +46,33 @@ const PropertyController = {
         }
     },
 
-    update : async(req,res) => {
+    update: async (req, res) => {
         try {
-            let currentUser = req.user
-            if(currentUser.role.role !== 'superadmin' && currentUser.role.role !=='admin'){
-                return res.status(400).json({msg:'Only superadmin and admin can access this route'})
+            let currentUser = req.user;
+            if (currentUser.role.role !== 'superadmin' && currentUser.role.role !== 'admin') {
+                return res.status(400).json({ msg: 'Only superadmin and admin can access this route' });
             }
-            let id = req.params.id
-            if(!mongoose.Types.ObjectId.isValid(id)){
-                return res.status(400).json('invalid id')
+    
+            let id = req.params.id;
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                return res.status(400).json('Invalid ID');
             }
-            let property = await Property.findById(id)
-            if(!property){
-                return res.status(400).json('property not found')
+    
+            let property = await Property.findById(id);
+            if (!property) {
+                return res.status(400).json('Property not found');
             }
-
-            if(req.files && req.files.length > 0){               
-                if(property.image){
-                    property.image.map(async(img)=>{
-                        await removeFile(__dirname + '/../public' + img)
-                    })
-                }
-            }
-
-            let propertyUpdate = await Property.findByIdAndUpdate(id,req.body,{new:true})
-            return res.status(200).json({msg:'update success',propertyUpdate})
+            // Update other fields
+            const updateData = { ...req.body}; // Ensure to include the updated image array
+            let propertyUpdate = await Property.findByIdAndUpdate(id, updateData, { new: true });
+    
+            return res.status(200).json({ msg: 'Update success', propertyUpdate });
         } catch (error) {
-            return res.status(500).json(error.message)
+            console.log(error);
+            return res.status(500).json(error.message);
         }
     },
+    
 
     delete : async(req,res) => {
         try {
@@ -109,8 +107,12 @@ const PropertyController = {
             if(!property){
                 return res.status(400).json('property not found')
             }
-            let uploadImg = {image : req.files.map(file => '/' + file.filename)}
-
+            let uploadImg = {image : req.files.map(file => '/' + file.filename)}            
+            if(property.image && property.image !== uploadImg){
+                property.image.map(async(img)=>{
+                    await removeFile(__dirname + '/../public' + img)
+                })
+            } 
             let propertyUpdate = await Property.findByIdAndUpdate(id,uploadImg,{new:true})
             return res.status(200).json({msg:'update success',propertyUpdate})
         } catch (error) {

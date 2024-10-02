@@ -8,7 +8,6 @@ export default function AdminNavHeader({toggle}) {
     let {user,dispatch} = useContext(AuthContext)
     let navigate = useNavigate()
     let [open,setOpen] = useState(false)
-
     const toggleMenu = () => {
       setOpen(!open)
     }
@@ -33,10 +32,17 @@ export default function AdminNavHeader({toggle}) {
         <i className='fa fa-bars md:hidden text-2xl cursor-pointer mx-2' onClick={toggleMenu} ></i>
         <div>
 
-          <div className="adprofile flex relative items-center">
-              <h4 className='text-gray-500 me-3'>{user.fullname}</h4>
-              <img src={User} alt="" className='w-[33px] rounded-full cursor-pointer' />
-          </div>
+          <Link to={'/admin/profile'}>
+            <div className="adprofile flex relative items-center">
+                <h4 className='text-gray-500 me-3'>{user.fullname}</h4>
+                {
+                  user.profile ?
+                   <img src={import.meta.env.VITE_BACKEND_URL_ACCESS + user.profile} className='w-[33px] rounded-full cursor-pointer' /> 
+                   : 
+                   <img src={User} alt="" className='w-[33px] rounded-full cursor-pointer' />
+                }
+            </div>
+          </Link>
         </div>        
     </div>
 
@@ -48,6 +54,8 @@ export default function AdminNavHeader({toggle}) {
           <li><Link to={'/admin/adminlist'} onClick={menuClose}>Admin List</Link></li>
           <li><Link to={'/admin/userlist'} onClick={menuClose}>User List</Link></li>
           <li><Link to={'/admin/properties'} onClick={menuClose}>Properties</Link></li>
+          <li><Link to={'/admin/properties'} onClick={menuClose}>Apointment</Link></li>
+          <li><Link to={'/admin/properties'} onClick={menuClose}>Contact Message</Link></li>
           <li><button onClick={LogoutSubmit}>Logout</button></li>
         </ul>
       </div>

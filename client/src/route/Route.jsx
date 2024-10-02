@@ -19,6 +19,9 @@ import AdminProperties from '../adminPage/AdminProperties'
 import PropertyType from '../adminPage/PropertyType'
 import AddProperty from '../adminComponent/addProperty/AddProperty'
 import AdminPropertyDetail from '../adminComponent/propertyDetail/AdminPropertyDetail'
+import AdminProfile from '../adminPage/AdminProfile'
+import AdChangePw from '../adminComponent/adChangePw/AdChangePw'
+import AdEditProfile from '../adminComponent/adEditProfile/AdEditProfile'
 
 
 
@@ -102,6 +105,18 @@ export default function Route() {
                     path : '/admin/add/property/:id',
                     element : isAdmin ? <AddProperty/> : <ErrorPage/>
                 },
+                {
+                    path : '/admin/profile',
+                    element : isAdmin ? <AdminProfile/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/changepw',
+                    element : isAdmin ? <AdChangePw/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/edit/profile',
+                    element: isAdmin ? <AdEditProfile/> : <ErrorPage/>
+                }
                 
             ]
         }

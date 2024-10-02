@@ -3,6 +3,7 @@ const User = require('../model/UserModel')
 const bcrypt = require('bcrypt')
 const Role = require('../model/RoleModel')
 const mongoose = require('mongoose')
+const removeFile = require('../helper/removeFile')
 
 const UserController = {
     register : async(req,res) => { 
@@ -156,7 +157,7 @@ const UserController = {
             return res.status(200).json(admin)
         } catch (error) {
             return res.status(500).json(error.message)
-        }
+        } 
     },
 
     delete : async(req,res) =>{
@@ -180,8 +181,51 @@ const UserController = {
             
         } catch (error) {
             return res.status(500).json(error.message)
+        }  
+    },
+
+    changePassword : async(req,res) =>{
+        let currentUser = req.user
+        let {oldpassword,newpassword} = req.body
+        let user = await User.findById(currentUser._id)
+        let checkPassword = await bcrypt.compare(oldpassword,user.password)
+        if(!checkPassword){
+            return res.status(400).json({msg:'Old Password does not match'})
+        }
+        let salt = await bcrypt.genSalt()
+        let hashPassword = await bcrypt.hash(newpassword,salt)
+        user.password = hashPassword
+        await user.save()
+        return res.status(200).json({msg:'password changed'})
+    },
+
+    editProfile : async(req,res) => {
+        let currentUser = req.user
+        let {fullname,phone} = req.body
+        let user = await User.findById(currentUser._id)
+        user.fullname = fullname
+        user.phone = phone
+        await user.save()
+        return res.status(200).json({msg:'profile updated'})
+    },
+
+    uploadProfile : async(req,res) =>{
+        try {
+            let currentUser = req.user
+            let user = await User.findById(currentUser._id)
+            let profile = {profile : '/' + req.file.filename}
+            if(user.profile && user.profile !== profile){
+                await removeFile(__dirname + '/../public' + user.profile)
+            }
+            let data = await User.findByIdAndUpdate(currentUser._id,profile,{new : true})
+            return res.status(200).json({data,msg:'profile updated'})
+        } catch (error) { 
+            console.log(error);
+              
         }
     }
+
+    
 }
 
 module.exports = UserController

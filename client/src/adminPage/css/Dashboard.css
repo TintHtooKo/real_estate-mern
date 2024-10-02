@@ -12,4 +12,8 @@
         flex-direction: column;
         margin: 20px;
     }
+
+    .adprofile{
+        flex-direction: column;
+    }
 }

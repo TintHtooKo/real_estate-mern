@@ -25,37 +25,49 @@ export default function AdminNavBar({open}) {
           <h1 className='text-gray-200 text-2xl font-bold cursor-pointer'>LOGO</h1>
         </div>
         <div className=' ms-3 flex flex-col'>
-          <NavLink to={'/admin/dashboard'} className={({isActive})=>`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 
+          <NavLink to={'/admin/dashboard'} className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
             <i className="fa-solid fa-gauge me-5 "></i> Dashboard
           </NavLink>
 
-          <NavLink to={'/admin/adminlist'} className={({isActive})=>`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 
+          <NavLink to={'/admin/adminlist'} className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
             <i className="fa-solid fa-user-tie me-5"></i>Agent List
           </NavLink>
 
-          <NavLink to={'/admin/userlist'} className={({isActive})=>`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 
+          <NavLink to={'/admin/userlist'} className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
             <i className="fa-solid fa-users me-5"></i>User List
           </NavLink>
 
-          <NavLink to={'/admin/properties'} className={({isActive})=>`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 
+          <NavLink to={'/admin/properties'} className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
             <i class="fa-solid fa-house-chimney me-5"></i>Properties
           </NavLink>
 
-          <NavLink to={'/admin/protype'} className={({isActive})=>`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 
+          <NavLink to={'/admin/protype'} className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
             <i class="fa-solid fa-house-circle-check me-5"></i>Property Type
           </NavLink>
+
+          <NavLink  className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
+                                      ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
+                                      `}>
+            <i class="fa-solid fa-calendar-check me-5"></i>Apointment
+          </NavLink>
+
+          <NavLink  className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
+                                      ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
+                                      `}>
+            <i class="fa-solid fa-message me-5"></i>Contact Message
+          </NavLink>
               
-          <button onClick={LogoutSubmit} className={`text-[18px] cursor-pointer my-5 flex items-center transition-all duration-300 text-gray-500 hover:text-gray-200 '}
+          <button onClick={LogoutSubmit} className={`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 text-gray-500 hover:text-gray-200 '}
                                       `}>
             <i className="fa-solid fa-right-from-bracket me-5"></i>Logout
           </button>

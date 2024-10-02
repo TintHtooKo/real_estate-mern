@@ -13,14 +13,6 @@ export default function Properties() {
         </div>
         <div className="property-home">
           <Property/>
-          <Property/>
-          <Property/>
-          <Property/>
-          <Property/>
-          <Property/>
-          <Property/>
-          <Property/>
-          <Property/>
         </div>
         <div className=" mt-[10rem] flex items-center justify-center">
         <nav aria-label="Page navigation example">
