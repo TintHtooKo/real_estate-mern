@@ -6,12 +6,16 @@ import './css/Home.css'
 import ForAbout from '../component/about/ForAbout'
 import Testimonial from '../component/testimonial/Testimonial'
 import AgentPage from '../component/agent/AgentPage'
+import Aos from 'aos'
 
 
 
 export default function Home() {
   const title = "The Simplest Way to Find Property"
   const paragraph = "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts"
+  useEffect(()=>{
+    Aos.init({duration:1000})
+},[])
   
   return (
     <div className=" ">
@@ -31,10 +35,8 @@ export default function Home() {
           <p className='text-center text-pink-500'>_____ WHAT WE OFFER _____</p>
           <h1 className="text-center text-4xl">Exclusive Offer For You</h1>
         </div>
-        <div className="property-home">
-          <Property/>
-          <Property/>
-          <Property/>
+        <div className="" data-aos="fade-up" >
+          <Property limit={3}/>
         </div>
       </div>
 

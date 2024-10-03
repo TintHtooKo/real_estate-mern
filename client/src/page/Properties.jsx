@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Hero from '../component/hero/Hero'
 import Property from '../component/property/Property'
 import './css/Home.css'
+import Aos from 'aos'
 
 
 export default function Properties() {
     const title = "PROPERTIES"
+    useEffect(()=>{
+      Aos.init({duration:1000})
+  },[])
     return (
       <div className="">
         <div className="">
           <Hero title={title}/>
         </div>
-        <div className="property-home">
+        <div className="" data-aos="fade-up">
           <Property/>
         </div>
         <div className=" mt-[10rem] flex items-center justify-center">

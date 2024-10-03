@@ -1,3 +1,11 @@
+.property{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 80px;
+    margin: 40px;
+
+}
+
 @media screen and (max-width: 768px) {
     .offer{
         position: static;
@@ -5,12 +13,20 @@
         border-radius: 10px;
         box-shadow: 0 0 20px rgb(0 0 0 / 10%);
     }
+
+    .property{
+        grid-template-columns: repeat(2,1fr);
+    }
 }
 
 @media screen and (max-width: 500px) {
     .offerone{
         flex-direction: column;
         gap: 0;
+    }
+
+    .property{
+        grid-template-columns: 1fr;
     }
 
     .offertwo{

@@ -1,0 +1,32 @@
+.detail-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 50px;
+
+}
+@media screen and (max-width: 765px) {
+    .apoint-detail{
+        flex-direction: column;
+    }
+    
+    .apoint-detail div img{
+        width: 100%;
+    }   
+}
+
+@media screen and (max-width: 500px) {
+    .detail-grid{
+        grid-template-columns: repeat(2,1fr);
+        gap: 0;
+    }
+
+    .detail-grid div p{
+        font-size: 18px;
+    }
+
+    .detail-grid div span{
+        font-size: 16px;
+    }
+    
+    
+}

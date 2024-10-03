@@ -25,6 +25,8 @@ import AdEditProfile from '../adminComponent/adEditProfile/AdEditProfile'
 import ContactMsg from '../adminPage/ContactMsg'
 import AdApointment from '../adminPage/AdApointment'
 import ContactDetail from '../adminComponent/contactDetail/ContactDetail'
+import Detail from '../page/Detail'
+import ApointDetail from '../adminComponent/apointDetail/ApointDetail'
 
 
 
@@ -63,6 +65,10 @@ export default function Route() {
                 {
                     path : '/contact',
                     element : !isAdmin && <Contact/>
+                },
+                {
+                    path : '/detail/:id',
+                    element : !isAdmin && <Detail/>
                 },
                 {
                     path : '/login',
@@ -131,6 +137,10 @@ export default function Route() {
                 {
                     path : '/admin/contact/:id',
                     element : isAdmin ? <ContactDetail/> : <ErrorPage/>
+                },
+                {
+                    path : '/admin/apointment/:id',
+                    element : isAdmin ? <ApointDetail/> : <ErrorPage/>
                 }
                 
             ]
