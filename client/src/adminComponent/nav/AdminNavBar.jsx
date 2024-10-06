@@ -1,13 +1,34 @@
-import React, { useContext } from 'react' 
+import React, { useContext, useEffect, useState } from 'react' 
 import './AdminNavBar.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import axios from '../../helper/axios'
+import { ApointContext } from '../../context/ApointContext'
 
 export default function AdminNavBar({open}) { 
   let {user,dispatch} = useContext(AuthContext)
   let navigate = useNavigate()
+  let [unread,setUnread] = useState(0)
+  let [msgUnread,setMsgUnread] = useState(0)
   let superAdmin = user?.role?.role === 'superadmin'
+
+  useEffect(()=>{
+    let fetchMsg = async()=>{
+      let res = await axios.get('/contact')
+      let unreadCount = res.data.filter(message => !message.read).length;
+      setMsgUnread(unreadCount);
+    }
+    fetchMsg()
+  })
+
+  useEffect(()=>{
+    let fetchApoint = async()=>{
+      let res = await axios.get('/apoint')
+      let unreadCount = res.data.filter(apoint => !apoint.read).length;
+      setUnread(unreadCount);
+    }
+    fetchApoint()
+  },[])
 
   const LogoutSubmit = async () => {
     let res = await axios.post('/user/logout')
@@ -58,13 +79,13 @@ export default function AdminNavBar({open}) {
           <NavLink to={'/admin/apointment'}  className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
-            <i class="fa-solid fa-calendar-check me-5"></i>Apointment
+            <i class="fa-solid fa-calendar-check me-5"></i>Apointment <span className=' ms-8 bg-red-600 px-2 rounded-full text-white'>{unread}</span>
           </NavLink>
 
           <NavLink to={'/admin/contact'}  className={({isActive})=>`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 
                                       ${isActive ? 'text-gray-200' : 'text-gray-500  hover:text-gray-200'}
                                       `}>
-            <i class="fa-solid fa-message me-5"></i>Contact Message
+            <i class="fa-solid fa-message me-5"></i>Contact Message <span className=' ms-8 bg-red-600 px-2 rounded-full text-white'>{msgUnread}</span>
           </NavLink>
               
           <button onClick={LogoutSubmit} className={`text-[18px] cursor-pointer my-4 flex items-center transition-all duration-300 text-gray-500 hover:text-gray-200 '}

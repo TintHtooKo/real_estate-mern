@@ -32,12 +32,12 @@ export default function AdminNavHeader({toggle}) {
         <i className='fa fa-bars md:hidden text-2xl cursor-pointer mx-2' onClick={toggleMenu} ></i>
         <div>
 
-          <Link to={'/admin/profile'}>
+          <Link to={'/admin/profile'} onClick={menuClose}>
             <div className="adprofile flex relative items-center">
                 <h4 className='text-gray-500 me-3'>{user.fullname}</h4>
                 {
                   user.profile ?
-                   <img src={import.meta.env.VITE_BACKEND_URL_ACCESS + user.profile} className='w-[33px] rounded-full cursor-pointer' /> 
+                   <img src={import.meta.env.VITE_BACKEND_URL_ACCESS + user.profile} className='w-[33px] rounded cursor-pointer' /> 
                    : 
                    <img src={User} alt="" className='w-[33px] rounded-full cursor-pointer' />
                 }
@@ -47,7 +47,7 @@ export default function AdminNavHeader({toggle}) {
     </div>
 
     {/* for tablet and mobile size . This is for admin nav bar*/}
-    <div className={`admin-nav-res transition-all duration-300 overflow-auto lg:hidden bg-[#070922] w-full ${open ? 'h-[15rem]' : 'h-0'}`}>
+    <div className={`admin-nav-res transition-all duration-300 overflow-auto lg:hidden bg-[#070922] w-full ${open ? 'h-[22rem]' : 'h-0'}`}>
       <div className=" text-white">
         <ul className='flex flex-col gap-5 items-center p-5 text-md '>
           <li><Link to={'/admin/dashboard'} onClick={menuClose}>Dashboard</Link></li>

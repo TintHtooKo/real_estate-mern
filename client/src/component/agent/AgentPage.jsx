@@ -6,13 +6,6 @@ export default function AgentPage() {
   return (
     <div className=' agent mt-10'>
       <AgentCard/>
-      <AgentCard/>
-      <AgentCard/>
-      <AgentCard/>
-      <AgentCard/>
-      <AgentCard/>
-      <AgentCard/>
-      <AgentCard/>
     </div>
   )
 }

@@ -6,14 +6,14 @@ import Profile from '../../assets/user.svg'
 import axios from '../../helper/axios'
 
 export default function NavBar() {
-  const [open, setOpen] = useState(false)
-  const toggle = () => setOpen(!open)
-  const handleCloseMenu = () => setOpen(false)
-  const { user, dispatch } = useContext(AuthContext)
-  const navigate = useNavigate()
+  let [open, setOpen] = useState(false)
+  let toggle = () => setOpen(!open)
+  let handleCloseMenu = () => setOpen(false)
+  let { user, dispatch } = useContext(AuthContext)
+  let navigate = useNavigate()
   
 
-  const LogoutSubmit = async () => {
+  let LogoutSubmit = async () => {
     let res = await axios.post('/user/logout')
     if (res.status == 200) {
       dispatch({ type: 'LOGOUT' })
@@ -40,9 +40,9 @@ export default function NavBar() {
         </div>
 
         {user && (
-          <div className=" logout">
-            {/* <img src={Profile} className=' w-[50px] cursor-pointer' alt="" /> */}
-            <button onClick={LogoutSubmit}>Logout</button>
+          <div className=" logout flex gap-5">
+            <img src={Profile} className=' w-[45px] cursor-pointer'alt="" />
+            <button onClick={LogoutSubmit}><i className='fa-solid fa-right-from-bracket text-xl'></i></button>
           </div>
         )}
 

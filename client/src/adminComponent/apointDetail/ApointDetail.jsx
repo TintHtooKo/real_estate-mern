@@ -1,21 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import './ApointDetail.css'
 import axios from '../../helper/axios'
 import moment from 'moment'
+import { ApointContext } from '../../context/ApointContext'
 
 export default function ApointDetail() {
     let [detail,setDetail] = useState('')
+    let navigate = useNavigate()
     let {id} = useParams()
     useEffect(()=>{
         let fetchDetail = async()=>{
-            let res = await axios.get('/apoint/detail/'+id)
-            console.log(res.data);
-            
+            let res = await axios.get('/apoint/detail/'+id)     
             setDetail(res.data);
         }
         fetchDetail()
     },[id])
+
+    let updateRead = async(e)=>{
+        e.preventDefault();
+        try {
+            let updateRead = !detail.read
+            let res = await axios.patch('/apoint/update/'+id,{read:updateRead})
+            if(res.status == 200){   
+                setDetail(res.data)
+                navigate('/admin/apointment')
+                window.location.reload()
+            }
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+
   return (
     <div className="">
         <Link to={'/admin/apointment'}><i className='fa-solid fa-long-arrow-left text-xl bg-black text-white px-3 m-5'></i></Link>
@@ -45,6 +62,13 @@ export default function ApointDetail() {
                     <div className="  flex flex-col mb-5 items-start">
                         <p className='text-[20px]'>Date</p>
                         <span className='text-[18px] text-gray-600'>{moment(detail.createdAt).format('DD-MM-YYYY')}</span>
+                    </div>
+                    <div className="  flex flex-col mb-5 items-start">
+                        <form action="" onSubmit={updateRead}>
+                            <button type="submit" className="bg-black text-white px-3 py-1 rounded mt-2">
+                                {detail.read ? 'Mark as Unread' : 'Mark as Read'}
+                            </button>
+                        </form>
                     </div>
                 </div>
 

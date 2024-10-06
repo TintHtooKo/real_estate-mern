@@ -7,6 +7,11 @@ import { Link } from 'react-router-dom'
 
 export default function Property({limit}) {
   let [property,setProperty] = useState([])
+  let [search, setSearch] = useState('')
+
+  let scrollTop = ()=>{
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+  }
 
   useEffect(()=>{
     let fetchProperty = async()=>{
@@ -25,7 +30,7 @@ export default function Property({limit}) {
             <div key={index} className=" relative">
               <img src={import.meta.env.VITE_BACKEND_URL_ACCESS + item.image[0]} alt="" />
               <span className=' absolute top-0 bg-pink-500 text-white px-3 py-1'>{item?.rentsell?.name}</span>
-              <Link to={`/detail/${item._id}`}>
+              <Link to={`/detail/${item._id}`} onClick={scrollTop}>
               <div className=" offer absolute bg-white shadow-md rounded p-5 px-7 top-[10rem] left-5 transition-all duration-300 cursor-pointer hover:shadow-2xl">
                 <div className=" offerone flex gap-10">
                     <p className=" font-bold"> AED {item.price}</p>

@@ -10,7 +10,7 @@ export default function AdminProfile() {
     <div className=" adprofile flex items-center m-24 gap-10">
       <div className="">
         {
-          user.profile ? <img src={import.meta.env.VITE_BACKEND_URL_ACCESS + user.profile} className='w-[15rem] rounded-full' /> : <img src={Profile} className='w-[15rem] rounded-full' alt="" />
+          user.profile ? <img src={import.meta.env.VITE_BACKEND_URL_ACCESS + user.profile} className='w-[15rem] rounded' /> : <img src={Profile} className='w-[15rem] rounded-full' alt="" />
         }
       </div>
 

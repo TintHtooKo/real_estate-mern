@@ -62,8 +62,8 @@ const PropertyController = {
             if (!property) {
                 return res.status(400).json('Property not found');
             }
-            // Update other fields
-            const updateData = { ...req.body}; // Ensure to include the updated image array
+
+            const updateData = { ...req.body}; 
             let propertyUpdate = await Property.findByIdAndUpdate(id, updateData, { new: true });
     
             return res.status(200).json({ msg: 'Update success', propertyUpdate });

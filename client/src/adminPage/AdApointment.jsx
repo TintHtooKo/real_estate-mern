@@ -15,7 +15,6 @@ export default function AdApointment() {
   useEffect(()=>{
     let fetchApoint = async()=>{
       let res = await axios.get('/apoint')
-      console.log(res.data);
       setApoint(res.data)
     }
     fetchApoint()
@@ -25,15 +24,9 @@ export default function AdApointment() {
     try {
       let res = await axios.delete(`/apoint/delete/${id}`)
       if(res.status === 200){
+        window.location.reload()
         let res = await axios.get('/apoint')
         setApoint(res.data)
-        toast.success('Apointment Delete Successfully',{
-          position : 'top-right',
-          autoClose : 4000,
-          pauseOnHover : true,
-          draggable : true,
-          theme : 'dark'
-        })
       }
     } catch (error) {
       console.log(error);
@@ -61,13 +54,13 @@ export default function AdApointment() {
                         <th scope="col" className="px-6 py-4">Property</th>
                         <th scope="col" className="px-6 py-4">Created At</th>
                         {superAdmin && <th scope="col" className="px-6 py-4"></th>}
-                        </tr>
+                        </tr> 
                     </thead>
                     <tbody>
                         {
                             apoint.map((item,index)=>(
                                 <tr key={index}
-                                className="border-b border-neutral-200 transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-white/10 dark:hover:bg-neutral-600">
+                                className={`border-b border-neutral-200 transition duration-300 ease-in-out ${item.read === false ? '' : 'bg-gray-200'} hover:bg-neutral-100 dark:border-white/10 dark:hover:bg-neutral-600`}>
                                 <td className="whitespace-nowrap px-6 py-4">{item.name}</td>
                                 <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
                                 <td className="whitespace-nowrap px-6 py-4">{item.phone}</td>

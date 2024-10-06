@@ -75,6 +75,7 @@ export default function Detail() {
                     draggable : true,
                     theme : 'dark'
                 })
+                setSelectAgent('')
             }
         } catch (error) {
             console.log(error);           

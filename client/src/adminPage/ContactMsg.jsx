@@ -12,7 +12,8 @@ export default function ContactMsg() {
     useEffect(()=>{
         let fetchContact = async() =>{
             let contact = await axios.get('/contact')
-            setContact(contact.data);         
+            setContact(contact.data);     
+            console.log(contact.data)    
         }
         fetchContact()
     },[])
@@ -27,6 +28,7 @@ export default function ContactMsg() {
                 draggable : true,
                 theme : 'dark'
             })
+            window.location.reload()
             let contact = await axios.get('/contact')
             setContact(contact.data);
         }
@@ -59,7 +61,7 @@ export default function ContactMsg() {
                             contact.length > 0 ? (
                                 contact.map((contact,index)=>(
                                     <tr key={index}
-                                    className="border-b border-neutral-200 transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-white/10 dark:hover:bg-neutral-600">
+                                    className={`border-b border-neutral-200 transition duration-300 ease-in-out ${contact.read === false ? '' : 'bg-gray-200'} hover:bg-neutral-100 dark:border-white/10 dark:hover:bg-neutral-600`}>
                                     <td className="whitespace-nowrap px-6 py-4">{index+1}</td>
                                     <td className="whitespace-nowrap px-6 py-4">{contact.name}</td>
                                     <td className="whitespace-nowrap px-6 py-4">{contact.email}</td>

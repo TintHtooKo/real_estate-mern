@@ -37,6 +37,23 @@ const ContactController = {
         }
     },
 
+    update : async(req,res)=>{
+        try {
+            let id = req.params.id
+            if(!mongoose.Types.ObjectId.isValid(id)){
+                return res.status(400).json('invalid id')
+            }
+            let contact = await Contact.findById(id)
+            if(!contact){
+                return res.status(400).json('contact not found')
+            }
+            let updateContact = await Contact.findByIdAndUpdate(id,req.body,{new:true})
+            return res.status(200).json({msg:'update success',updateContact})
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    },
+
     delete : async(req,res) =>{
         try {
             let id = req.params.id

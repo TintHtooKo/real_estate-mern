@@ -44,7 +44,7 @@ export default function AdEditProfile() {
                     'Content-Type' : 'multipart/form-data'
                 }
             })            
-            }
+            } 
             if(res.status == 200){              
                 dispatch({
                     type: 'UPDATE_PROFILE',

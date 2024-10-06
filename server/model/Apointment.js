@@ -23,6 +23,10 @@ const ApointmentSchema = new Schema({
     property : {
         type : Schema.Types.ObjectId,
         ref : 'Property',
+    },
+    read : {
+        type : Boolean,
+        default : false
     }
 
 },{timestamps : true})

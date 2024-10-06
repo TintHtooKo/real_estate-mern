@@ -42,6 +42,25 @@ const ApointmentController = {
         }
     },
 
+    update : async(req,res) =>{
+        try {
+            let id = req.params.id
+            if(!mongoose.Types.ObjectId.isValid(id)){
+                return res.status(400).json('invalid id')
+            }
+            let apoint = await Apointment.findById(id)
+                                        .populate({path :'agent',select : 'fullname'})
+                                        .populate({path : 'property', select : 'name price image location rentsell'})
+            if(!apoint){
+                return res.status(400).json('apoint not found')
+            }
+            let updateApoint = await Apointment.findByIdAndUpdate(id,{...req.body},{new:true})
+            return res.status(200).json({msg:'update success',updateApoint})
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    },
+
     delete : async(req,res) =>{
         try {
             let id = req.params.id
