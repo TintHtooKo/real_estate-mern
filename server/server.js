@@ -29,6 +29,7 @@ app.use(cors({
 }))
 
 
+
 app.use('/role',RoleRoute)
 app.use('/user',UserRoute)
 app.use('/rentsell',RentOrSellRoute)

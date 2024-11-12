@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import './ApointDetail.css'
 import axios from '../../helper/axios'
 import moment from 'moment'
-import { ApointContext } from '../../context/ApointContext'
 
 export default function ApointDetail() {
     let [detail,setDetail] = useState('')

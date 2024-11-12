@@ -3,7 +3,6 @@ import './AdminNavBar.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import axios from '../../helper/axios'
-import { ApointContext } from '../../context/ApointContext'
 
 export default function AdminNavBar({open}) { 
   let {user,dispatch} = useContext(AuthContext)

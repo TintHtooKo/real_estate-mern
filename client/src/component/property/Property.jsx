@@ -3,30 +3,39 @@ import {FaBath, FaBed} from 'react-icons/fa'
 import { TbViewportWide } from "react-icons/tb";
 import './Property.css'
 import axios from '../../helper/axios'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import Pagination from '../pagination/Pagination';
 
 export default function Property({limit}) {
   let [property,setProperty] = useState([])
   let [search, setSearch] = useState('')
-
+  let [links,setLinks] = useState(null)
+  let location = useLocation()
+  let searchQuery = new URLSearchParams(location.search)
+  let page = searchQuery.get('page')
+  page = parseInt(page)
   let scrollTop = ()=>{
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
   }
 
   useEffect(()=>{
     let fetchProperty = async()=>{
-      let res = await axios.get('/property')
-      setProperty(res.data);      
+      let res = await axios.get(`/property/?page=${page}`)
+      setProperty(res.data.data);     
+      setLinks(res.data.links)
+      scrollTop()
     }
     fetchProperty()
-  },[])
+  },[page])
 
-  let displayedProperties = limit ? property.slice(0, limit) : property
+
+  
 
   return ( 
+    <>
     <div className=" property">
         {
-          displayedProperties.map((item,index)=>(
+          property.map((item,index)=>(
             <div key={index} className=" relative">
               <img src={import.meta.env.VITE_BACKEND_URL_ACCESS + item.image[0]} alt="" />
               <span className=' absolute top-0 bg-pink-500 text-white px-3 py-1'>{item?.rentsell?.name}</span>
@@ -58,6 +67,10 @@ export default function Property({limit}) {
         }
        
     </div>
+        <div className=" mt-[10rem] flex items-center justify-center">
+          {!!links && <Pagination links={links} page={page || 1} location={location}/>}
+        </div>
+    </>
   )
 }
 

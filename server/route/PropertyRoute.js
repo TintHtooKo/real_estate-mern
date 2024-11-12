@@ -10,6 +10,7 @@ router.get('/detail/:id',PropertyController.detail)
 router.patch('/update/:id',AuthMiddleware,PropertyController.update)
 router.delete('/delete/:id',AuthMiddleware,PropertyController.delete)
 router.post('/upload/:id',upload.array('image',12),AuthMiddleware,PropertyController.upload)
+router.get('/admin',AuthMiddleware,PropertyController.admin)
 
 
 module.exports = router

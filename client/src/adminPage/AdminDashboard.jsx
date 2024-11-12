@@ -11,7 +11,7 @@ export default function AdminDashboard() {
 
   useEffect(()=>{
     let fetchProperty = async()=>{
-      let property = await axios.get('/property')
+      let property = await axios.get('/property/admin')
       setTotalProperty(property.data.length)
     }
     fetchProperty()

@@ -8,12 +8,40 @@ const PropertyController = {
 
     index : async(req,res) => {
         try {
-            let property = await Property.find().populate('rentsell').populate('type').sort({createdAt : -1})
-            return res.status(200).json(property)
+            let limit = 6
+            let page = req.query.page || 1
+            let property = await Property
+                                .find()
+                                .populate('rentsell').populate('type')
+                                .skip((page-1)*limit)
+                                .limit(limit)
+                                .sort({createdAt : -1})
+            let totalProperty = await Property.countDocuments()
+            let totalPage = Math.ceil(totalProperty/limit)
+            let links = {
+                nextPage : totalPage == page ? false : true,
+                previousPage : page == 1 ? false : true,
+                currentPage : page,
+                loopLinks : []
+                }
+
+            for (let index = 0; index < totalPage; index++) {
+                let number = index + 1
+                links.loopLinks.push({number})
+            }
+
+            let response = {
+                links,
+                data : property,
+            }
+            
+            return res.status(200).json(response)
         } catch (error) {
             return res.status(500).json(error.message)
         }
     },
+
+    
  
     create : async(req,res) => {
         try {
@@ -119,6 +147,15 @@ const PropertyController = {
             return res.status(500).json(error.message)
         } 
     },
+
+    admin : async(req,res) => {
+        try {
+            let property = await Property.find().populate('rentsell').populate('type').sort({createdAt : -1})
+            return res.status(200).json(property)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
 
 
 }

@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import axios from '../helper/axios'
 import { ToastContainer,toast } from 'react-toastify'
+import Pagination from '../component/pagination/Pagination'
 
 export default function AdminProperties() {
   let {user} = useContext(AuthContext)
   let superAdmin = user?.role?.role === 'superadmin' 
   let [property,setProperty] = useState([])
   let [search,setSerach] = useState('')
+  let [links,setLinks] = useState(null)
 
   useEffect(()=>{
     let fetchProperty = async()=>{
-      let property = await axios.get('/property')
+      let property = await axios.get('/property/admin')
       setProperty(property.data)
     }
     fetchProperty()
@@ -97,6 +99,7 @@ export default function AdminProperties() {
                         }
                     </tbody>
                     </table>
+
                 </div>               
                 </div>
             </div>
